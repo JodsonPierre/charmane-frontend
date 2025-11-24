@@ -1,0 +1,373 @@
+/* Fonte e reset */
+/* Fonte e reset */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Montserrat:wght@500;700&display=swap');
+
+:root {
+  --bg: #ffffff;
+  --text: #111;
+  --accent: #000000;
+  --card: rgba(255, 255, 255, 0.85);
+}
+
+[data-theme="dark"] {
+  --bg: #000000;
+  --text: #f5f5f5;
+  --accent: #ffffff;
+  --card: rgba(30, 30, 30, 0.9);
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg) url('https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
+  color: var(--text);
+  transition: background 0.5s, color 0.5s;
+}
+
+/* Cabeçalho */
+header {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 1.2rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.logo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+.logo span {
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.menu {
+  text-decoration: none;
+  color: white;
+  margin: 0 1rem;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.menu a:hover {
+  color: #ccc;
+}
+
+/* Ícones */
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.icons i {
+  font-size: 1.3rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* Produtos */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 4rem 2rem;
+}
+
+.product {
+  background: var(--card);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.product:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+.product img {
+  width: 100%;
+  border-radius: 10px;
+}
+.product h2 {
+  font-family: 'Montserrat', sans-serif;
+  margin: 1rem 0 0.5rem;
+}
+.product .desc {
+  color: #555;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+}
+.product .price {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.add-to-cart {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.add-to-cart:hover {
+  background: #222;
+}
+
+
+/* ======================== */
+/* CARRINHO PROFISSIONAL (Slide-in) */
+/* ======================== */
+#cart {
+  /* --- O Básico --- */
+  background: var(--card); 
+  color: var(--text);
+  width: 380px;      /* Largura fixa */
+  max-width: 90%;   /* No celular, ocupa 90% */
+  height: 100vh;     /* 100% da altura da tela */
+  padding: 1.5rem;
+  box-sizing: border-box; 
+  
+  /* --- Posição --- */
+  position: fixed;
+  top: 0;
+  right: 0; /* "Grudado" na direita */
+  z-index: 1000;
+  box-shadow: -5px 0 20px rgba(0,0,0,0.2); /* Sombra bonita na esquerda */
+
+  /* --- A Mágica da Animação --- */
+  transform: translateX(100%); /* Começa escondido */
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  
+  /* --- Layout Interno --- */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Quando o JS adiciona a classe .open, ele "entra" na tela */
+#cart.open {
+  transform: translateX(0);
+}
+
+/* Header do Carrinho (com Título e botão Fechar) */
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--text);
+  padding-bottom: 1rem;
+}
+
+.cart-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+#close-cart-btn {
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  color: var(--text);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+/* Lista de Itens (para rolar) */
+#cartItems {
+  flex-grow: 1; /* Ocupa todo o espaço disponível */
+  overflow-y: auto; /* Adiciona scroll se a lista for grande */
+  padding: 0 0.5rem; /* Espaçamento interno */
+  margin: 1rem 0;
+  list-style: none; /* Garante que não tem bolinhas */
+}
+
+/* Estilos dos itens da lista */
+#cartItems li {
+  display: flex;
+  justify-content: space-between;
+  background: var(--bg);
+  color: var(--text);
+  margin-bottom: 0.6rem;
+  padding: 0.7rem 1rem;
+  border-radius: 6px;
+  align-items: center;
+}
+
+#cartItems button {
+  background: #ff3b3b;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#cartItems button:hover {
+  background: #cc0000;
+}
+
+
+/* Rodapé do Carrinho (Total e Botão) */
+.cart-footer {
+    flex-shrink: 0; /* Não encolhe */
+    margin-top: auto; /* Empurra pro final */
+    border-top: 1px solid var(--text);
+    padding-top: 1rem;
+}
+
+#totalPrice {
+  text-align: right;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+#checkoutBtn {
+  flex-shrink: 0; 
+  background: var(--accent);
+  color: var(--bg); /* Corrigido pra inverter com o accent */
+  border: none;
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
+
+
+/* Rodapé */
+footer {
+  background: rgba(0,0,0,0.8);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  margin-top: 3rem;
+}
+
+/* ============================================== */
+/* === CÓDIGO DO MENU RESPONSIVO === */
+/* ============================================== */
+
+/* Esconde o hambúrguer no PC/Tablet */
+#menu-hamburger {
+  display: none; 
+}
+
+/* Regra para telas pequenas (ex: 768px pra baixo) */
+@media (max-width: 768px) {
+  
+  /* 1. Esconde o menu de links */
+  .menu {
+    display: none;
+    position: absolute;
+    top: 70px; /* Altura do seu header */
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* 2. Estilo dos links dentro do menu aberto */
+  .menu a {
+    margin: 1rem 0;
+  }
+
+  /* 3. A classe 'open' que o JS vai adicionar */
+  .menu.open {
+    display: flex; 
+  }
+
+  /* 4. Mostra o ícone do hambúrguer */
+  #menu-hamburger {
+    display: block; /* Mostra ele */
+  }
+}
+
+/* Classe mágica que esconde produtos filtrados */
+.product.hidden {
+  display: none;
+}
+
+/* ======================== */
+/* === PÁGINA DE CONTATO === */
+/* ======================== */
+
+.contact-section {
+  max-width: 800px;
+  margin: 4rem auto; /* Espaçamento igual ao grid de produtos */
+  padding: 2.5rem;
+  background: var(--card); /* Re-usa o fundo do card */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.contact-section h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.2rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.contact-section p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text);
+  margin-bottom: 2.5rem;
+}
+
+.contact-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Espaço entre os links */
+}
+
+.contact-links li {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.contact-links li i {
+  margin-right: 10px; /* Ícone antes do texto */
+  color: var(--accent);
+  font-size: 1.3rem;
+}
+
+.contact-links li a {
+  color: var(--text);
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.contact-links li a:hover {
+  opacity: 0.7; /* Efeito suave ao passar o mouse */
+}
+
+.contact-links li a strong {
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* teste */

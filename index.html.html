@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Charmane Vêtements</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">CHARMANE <span>VÊTEMENTS</span></h1>
+      
+      <nav class="menu">
+        <a href="#" class="filter-link" data-filter="all">Home</a>
+        <a href="#" class="filter-link" data-filter="all">Coleção</a>
+        <a href="#" class="filter-link" data-filter="masculino">Masculino</a>
+        <a href="#" class="filter-link" data-filter="feminino">Feminino</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+      
+      <div class="icons">
+        <button id="themeToggle">🌙</button>
+        <a href="#" id="cart-icon"><i class="fas fa-shopping-cart"></i></a>
+        <a href="#" id="menu-hamburger"><i class="fas fa-bars"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="produtos-backend" class="product-grid"></section>
+
+    <section class="product-grid">
+      
+      <div class="product" data-category="feminino">
+        <img src="camisa.jpg" alt="Camisa Charmane">
+        <h2>Camisa Charmane</h2>
+        <p class="price">R$ 199,90</p>
+        <button class="add-to-cart" data-nome="Camisa Charmane" data-preco="199.90">Adicionar ao carrinho</button>
+      </div>
+
+      <div class="product" data-category="masculino">
+        <img src="calca.jpg" alt="Calça Slim">
+        <h2>Calça Slim</h2>
+        <p class="price">R$ 249,90</p>
+        <button class="add-to-cart" data-nome="Calça Slim" data-preco="249.90">Adicionar ao carrinho</button>
+      </div>
+      
+    </section>
+
+    </main>
+
+  <section id="cart">
+    <div class="cart-header">
+      <h2>🛒 Carrinho</h2>
+      <button id="close-cart-btn">&times;</button>
+    </div>
+    
+    <ul id="cartItems">
+      </ul>
+    
+    <div class="cart-footer">
+      <p id="totalPrice">Total: R$ 0,00</p>
+      <button id="checkoutBtn">Finalizar Compra</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Charmane Vêtements — Elegância e Estilo</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+  
+<!-- comentário de teste -->
+
