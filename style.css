@@ -370,4 +370,14 @@ footer {
   font-family: 'Montserrat', sans-serif;
 }
 
-/* teste */
+/* Adicione isso no seu arquivo CSS */
+
+nav a {
+    color: #ffffff !important; /* #ffffff é o código para BRANCO */
+    text-decoration: none;     /* Isso remove o sublinhado padrão dos links, se houver */
+}
+
+/* Se os links mudarem de cor quando passa o mouse, adicione isso também */
+nav a:hover {
+    color: #cccccc; /* Um cinza claro para dar um efeito legal ao passar o mouse */
+}
