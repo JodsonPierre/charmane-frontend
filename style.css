@@ -375,6 +375,10 @@ footer {
 nav a {
     color: #ffffff !important; /* #ffffff é o código para BRANCO */
     text-decoration: none;     /* Isso remove o sublinhado padrão dos links, se houver */
+    margin: 0 20px; 
+    /* Isso significa: 0 de margem em cima/baixo e 20px nas laterais (esquerda/direita) */
+    
+    font-size: 18px
 }
 
 /* Se os links mudarem de cor quando passa o mouse, adicione isso também */
